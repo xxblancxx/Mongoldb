@@ -15,44 +15,47 @@ namespace MongoApp
     {
         static void Main(string[] args)
         {
-            MongoClient client = new MongoClient("mongodb://127.0.0.1:27017");
-            MongoServer server = client.GetServer();
-            var db = server.GetDatabase("Social_Network");
-            var tweets = db.GetCollection<Tweet>("tweets");
-            // Find all tweets
-            var totalTweets = tweets.FindAll().Count();
-            Console.WriteLine("Total Documents in tweet collection: " + totalTweets);
+            var ex = new MongoDBExerciseHandler();
 
-            // Find users by selecting distinct on User
-            var totalUsers = tweets.Distinct("user").Count();
-            Console.WriteLine("Total user count:" + totalUsers);
+           
+            //First query
+            Console.WriteLine("How many Twitter users are in our database?");
+            Console.WriteLine("Total amount of users: " + ex.GetUserCount());
 
-            // Find top 10 of those who tag most other users.
-            var taggers = GetTopTenMostTaggers();
-            foreach (var user in taggers)
-            {
-                Console.WriteLine(user.AsBsonDocument.ToString().Replace("_id","Username:").Replace("\\", "").Replace("\"", "").Replace("{", "").Replace("}", "").Replace(":", ""));
-            }
+            //Second query
+            Console.WriteLine();
+            Console.WriteLine("Which Twitter users link the most to other Twitter users? (Provide the top ten.)");
+            WriteUsersFromBsonDocument(ex.GetTopTenTaggers());
+
+            //Third query
+            Console.WriteLine();
+            Console.WriteLine("Who is are the most mentioned Twitter users? (Provide the top five.)");
+            Console.WriteLine("--- --Not Completed Yet :(-- ---");
+
+            //Fourth query
+            Console.WriteLine();
+            Console.WriteLine("Who are the most active Twitter users (top ten)?");
+            WriteUsersFromBsonDocument(ex.GetMostActiveUsers());
+
+            //Fifth query
+            Console.WriteLine();
+            Console.WriteLine("Who are the five most grumpy (most negative tweets) and the most happy (most positive tweets)? (Provide five users for each group)");
+            Console.WriteLine("Top 5 Happy tweets (Containing happy|love|party|hug|kiss)");
+            WriteUsersFromBsonDocument(ex.GetMostHappyUsers());
+            Console.WriteLine("Top 5 Happy tweets (Containing angry|hate|fuck|kill)");
+            WriteUsersFromBsonDocument(ex.GetMostGrumpyUsers());
 
             Console.ReadLine();
         }
 
-        protected static IMongoClient _client;
-        protected static IMongoDatabase db;
-        static List<BsonDocument> GetTopTenMostTaggers()
+        public static void WriteUsersFromBsonDocument(List<BsonDocument> response)
         {
-            _client = new MongoClient("mongodb://127.0.0.1:27017");
-            db = _client.GetDatabase("Social_Network");
-
-            var collection = db.GetCollection<BsonDocument>("tweets");
-            var aggregate = collection.Aggregate(new AggregateOptions { AllowDiskUse = true })
-                .Match(new BsonDocument { { "text", BsonRegularExpression.Create(new Regex("@")) } })
-                .Group(new BsonDocument { { "_id", "$user" }, { "nrOfTags", new BsonDocument("$sum", 1) } })
-                .Sort(new BsonDocument { { "nrOfTags", -1 } })
-                .Limit(10);
-            var results = aggregate.ToList();
-
-            return results;
+            int count = 1;
+            foreach (var user in response)
+            {
+                Console.WriteLine(count + user.AsBsonDocument.ToString().Replace("_id", "Username:").Replace("\\", "").Replace("\"", "").Replace("{", "").Replace("}", "").Replace(":", ""));
+                count++;
+            }
         }
     }
 }
