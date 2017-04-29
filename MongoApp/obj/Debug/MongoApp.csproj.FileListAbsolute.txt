@@ -12,6 +12,5 @@ D:\Projects\MongoApp\MongoApp\bin\Debug\MongoDB.Driver.Core.xml
 D:\Projects\MongoApp\MongoApp\bin\Debug\MongoDB.Driver.Legacy.xml
 D:\Projects\MongoApp\MongoApp\obj\Debug\MongoApp.exe
 D:\Projects\MongoApp\MongoApp\obj\Debug\MongoApp.pdb
-D:\Projects\MongoApp\MongoApp\obj\Debug\MongoApp.csprojResolveAssemblyReference.cache
 D:\Projects\MongoApp\MongoApp\bin\Debug\Newtonsoft.Json.dll
 D:\Projects\MongoApp\MongoApp\bin\Debug\Newtonsoft.Json.xml

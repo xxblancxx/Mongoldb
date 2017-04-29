@@ -42,9 +42,12 @@ namespace MongoApp
             Console.WriteLine("Who are the five most grumpy (most negative tweets) and the most happy (most positive tweets)? (Provide five users for each group)");
             Console.WriteLine("Top 5 Happy tweets (Containing happy|love|party|hug|kiss)");
             WriteUsersFromBsonDocument(ex.GetMostHappyUsers());
+            Console.WriteLine();
             Console.WriteLine("Top 5 Happy tweets (Containing angry|hate|fuck|kill)");
             WriteUsersFromBsonDocument(ex.GetMostGrumpyUsers());
 
+
+            Console.WriteLine("Done!");
             Console.ReadLine();
         }
 
