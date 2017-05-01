@@ -2,6 +2,14 @@
 MongoDB exercise: 
 >https://github.com/HelgeCPH/db_course_nosql/blob/master/lecture_notes/MongoDB%20Exercise.ipynb
 
+###### Group
+
+<pre>
+Casper A. Jørgensen
+Martin B. Rasmussen
+Søren B. Sørensen
+</pre>
+
 ### Output of program
 
 ```
