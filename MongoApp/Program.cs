@@ -30,7 +30,7 @@ namespace MongoApp
             //Third query
             Console.WriteLine();
             Console.WriteLine("Who is are the most mentioned Twitter users? (Provide the top five.)");
-            Console.WriteLine("--- --Not Completed Yet :(-- ---");
+            Console.WriteLine("--- --Could not get this working. will be updated after hand-in, and teacher has been asked.-- ---");
 
             //Fourth query
             Console.WriteLine();
@@ -43,7 +43,7 @@ namespace MongoApp
             Console.WriteLine("Top 5 Happy tweets (Containing happy|love|party|hug|kiss)");
             WriteUsersFromBsonDocument(ex.GetMostHappyUsers());
             Console.WriteLine();
-            Console.WriteLine("Top 5 Happy tweets (Containing angry|hate|fuck|kill)");
+            Console.WriteLine("Top 5 Grumpy tweets (Containing angry|hate|fuck|kill)");
             WriteUsersFromBsonDocument(ex.GetMostGrumpyUsers());
 
 
