@@ -1,5 +1,7 @@
 # Mongoldb
-MongoDB exercise
+MongoDB exercise: 
+>https://github.com/HelgeCPH/db_course_nosql/blob/master/lecture_notes/MongoDB%20Exercise.ipynb
+
 ### Output of program
 
 ```
